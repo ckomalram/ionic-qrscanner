@@ -9,6 +9,11 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 })
 export class Tab1Page {
 
+  swiperOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false,
+  };
+
   constructor(private barScanner: BarcodeScanner) {}
 
   ionViewDidEnter(){
