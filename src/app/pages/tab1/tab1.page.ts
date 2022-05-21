@@ -39,7 +39,10 @@ export class Tab1Page {
      }).catch(err => {
        //  console.log('Error', err);
          //Solo para cuando estamos probando en la pc, pq no cuenta con cordova /capacitor
-         this.datalocalservice.guardarRegistro('QRCode', 'https://spectergroup.godaddysites.com/');
+         //para qr http
+        //  this.datalocalservice.guardarRegistro('QRCode', 'https://spectergroup.godaddysites.com/');
+        //para qr de mapa
+         this.datalocalservice.guardarRegistro('QRCode', 'geo:40.73151796986687,-74.06087294062502');
      });
   }
 

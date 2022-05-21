@@ -37,3 +37,5 @@ https://angular.io/guide/lifecycle-hooks
 https://ionicframework.com/docs/v3/api/navigation/NavController/#viewDidEnter
 
 https://ionicframework.com/docs/native/in-app-browser
+
+https://www.mapbox.com/
