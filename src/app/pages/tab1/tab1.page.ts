@@ -18,26 +18,26 @@ export class Tab1Page {
   constructor(private barScanner: BarcodeScanner, private datalocalservice: DatalocalService) {}
 
   ionViewDidEnter(){
-    console.log('ionViewDidEnter');
+    //console.log('ionViewDidEnter');
   }
   ionViewWillEnter(){
-    console.log('ionViewDidEnter');
+    //console.log('ionViewDidEnter');
     this.scanCode();
   }
 
   ionViewDidLeave(){
-    console.log('ionViewDidLeave');
+    //console.log('ionViewDidLeave');
   }
 
   scanCode(){
-    console.log('scanCode');
+   // console.log('scanCode');
     this.barScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
+     // console.log('Barcode data', barcodeData);
       if ( !barcodeData.cancelled) {
         this.datalocalservice.guardarRegistro(barcodeData.format, barcodeData.text);
       }
      }).catch(err => {
-         console.log('Error', err);
+       //  console.log('Error', err);
          //Solo para cuando estamos probando en la pc, pq no cuenta con cordova /capacitor
          this.datalocalservice.guardarRegistro('QRCode', 'https://spectergroup.godaddysites.com/');
      });

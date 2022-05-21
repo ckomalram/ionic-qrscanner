@@ -11,11 +11,11 @@ export class Tab2Page {
   constructor(public datalocalservice: DatalocalService) {}
 
   enviarCorreo(){
-    console.log('Enviando correo');
+    //console.log('Enviando correo');
   }
 
   abrirRegistro(registro){
-    console.log('registro',registro);
+   // console.log('registro',registro);
   }
 
 }
