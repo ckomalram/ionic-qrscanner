@@ -4,6 +4,8 @@ import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { Registro } from '../models/registro.model';
 import { File } from '@awesome-cordova-plugins/file/ngx';
+import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
+
 
 
 @Injectable({
@@ -14,7 +16,7 @@ export class DatalocalService {
   guardados: Registro[] = [];
 
   constructor(private storage: Storage, private navCtrl: NavController, private iab: InAppBrowser,
-    private file: File
+    private file: File,private emailComposer: EmailComposer
   ) {
     this.init();
     this.cargarStorage();
@@ -78,7 +80,7 @@ export class DatalocalService {
     this.file.checkFile(this.file.dataDirectory, 'registros.csv')
       .then(existe => {
         console.log('existe archivo?', existe);
-        return this.escribirEnArchivo(text);
+         this.escribirEnArchivo(text);
       })
       .catch(error => {
         this.file.createFile(this.file.dataDirectory, 'registros.csv', false)
@@ -89,7 +91,24 @@ export class DatalocalService {
 
   async escribirEnArchivo(text: string) {
     await this.file.writeExistingFile(this.file.dataDirectory, 'registros.csv', text);
-    console.log('Archivo Creado!! ');
-    console.log(this.file.dataDirectory +  'registros.csv ');
+    // console.log('Archivo Creado!! ');
+    // console.log(this.file.dataDirectory +  'registros.csv ');
+
+    const archivo = `${this.file.dataDirectory}registros.csv`;
+    const email = {
+      to: 'glaw14@gmail.com',
+      // cc: 'erika@mustermann.de',
+      // bcc: ['john@doe.com', 'jane@doe.com'],
+      attachments: [
+        archivo
+      ],
+      subject: 'Prueba-Backup-QR-Scanner',
+      body: 'Prueba de ionic 6 con udemy-fernandoBarrera',
+      isHtml: true
+    };
+
+    // Send a text message using default options
+    this.emailComposer.open(email);
+
   }
 }

@@ -10,6 +10,8 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
+import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
+
 
 
 
@@ -17,7 +19,7 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule , IonicStorageModule.forRoot()],
-  providers: [BarcodeScanner ,InAppBrowser,File,
+  providers: [BarcodeScanner ,InAppBrowser,File,EmailComposer,
      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
