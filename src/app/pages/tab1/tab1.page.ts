@@ -42,7 +42,7 @@ export class Tab1Page {
          //para qr http
         //  this.datalocalservice.guardarRegistro('QRCode', 'https://spectergroup.godaddysites.com/');
         //para qr de mapa
-         this.datalocalservice.guardarRegistro('QRCode', 'geo:40.73151796986687,-74.06087294062502');
+         this.datalocalservice.guardarRegistro('QRCode', 'geo:8.9021822,-79.6838868');
      });
   }
 
