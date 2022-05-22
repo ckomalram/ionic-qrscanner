@@ -41,3 +41,8 @@ https://ionicframework.com/docs/native/in-app-browser
 https://www.mapbox.com/
 
 https://docs.mapbox.com/mapbox-gl-js/example/drag-a-marker/
+
+https://ionicframework.com/docs/native/file
+
+
+https://ionicframework.com/docs/native/email-composer

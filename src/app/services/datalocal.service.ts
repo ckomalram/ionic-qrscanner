@@ -3,6 +3,8 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { Registro } from '../models/registro.model';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,9 @@ export class DatalocalService {
 
   guardados: Registro[] = [];
 
-  constructor(private storage: Storage, private navCtrl: NavController, private iab: InAppBrowser) {
+  constructor(private storage: Storage, private navCtrl: NavController, private iab: InAppBrowser,
+    private file: File
+  ) {
     this.init();
     this.cargarStorage();
   }
@@ -54,5 +58,38 @@ export class DatalocalService {
       default:
         break;
     }
+  }
+
+  enviarCorreo() {
+    const arrTmp = [];
+    const titulos = 'Tipo, Formato, Creado en, Texto\n';
+    arrTmp.push(titulos);
+
+    this.guardados.forEach(registro => {
+      const linea = `${registro.type}, ${registro.format}, ${registro.creado}, ${registro.text.replace(',', ' ')}\n`;
+
+      arrTmp.push(linea);
+    });
+    this.crearArchivoFisico(arrTmp.join(''));
+    // console.log(arrTmp.join(''));
+  }
+
+  crearArchivoFisico(text: string) {
+    this.file.checkFile(this.file.dataDirectory, 'registros.csv')
+      .then(existe => {
+        console.log('existe archivo?', existe);
+        return this.escribirEnArchivo(text);
+      })
+      .catch(error => {
+        this.file.createFile(this.file.dataDirectory, 'registros.csv', false)
+        .then(creado => this.escribirEnArchivo(text))
+        .catch(error2 => console.log('No se pudo crear el archivo => ', error2));
+      });
+  }
+
+  async escribirEnArchivo(text: string) {
+    await this.file.writeExistingFile(this.file.dataDirectory, 'registros.csv', text);
+    console.log('Archivo Creado!! ');
+    console.log(this.file.dataDirectory +  'registros.csv ');
   }
 }
