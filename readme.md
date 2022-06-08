@@ -15,7 +15,7 @@
 * ionic serve
 * ionic serve --lab
 * ionic build
-* ionic capacitor run android -l --host=192.168.0.17
+* ionic capacitor run android -l --host=192.168.0.14
 * ionic capacitor add/copy android
 * ionic capacitor sync android
 * ionic g (page, module, component, service, pipe )
@@ -26,7 +26,12 @@
 * firebase login
 * firebase init
 * firebase deploy
-
+* npm i @ionic-native/core
+* npm i --save @awesome-cordova-plugins/core
+* npm install node-sass@4.0.0
+* ionic cordova prepare android
+* ionic cordova build android
+* ionic cordova run android -l --host=192.168.0.14
 
 https://ionicframework.com/docs/native/barcode-scanner
 
@@ -46,3 +51,9 @@ https://ionicframework.com/docs/native/file
 
 
 https://ionicframework.com/docs/native/email-composer
+
+https://www.freakyjolly.com/resolve-could-not-find-an-installed-version-of-gradle-either-in-android-studio/
+
+https://stackoverflow.com/questions/48147896/error-in-cannot-find-module-node-sass
+
+https://www.udemy.com/course/ionic-ios-android-pwa-appstore-playstore-push/learn/lecture/13416358#questions/17311878/

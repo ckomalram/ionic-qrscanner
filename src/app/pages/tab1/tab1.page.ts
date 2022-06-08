@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { DatalocalService } from 'src/app/services/datalocal.service';
 
 
@@ -22,7 +22,7 @@ export class Tab1Page {
   }
   ionViewWillEnter(){
     //console.log('ionViewDidEnter');
-    this.scanCode();
+    // this.scanCode();
   }
 
   ionViewDidLeave(){
@@ -30,13 +30,16 @@ export class Tab1Page {
   }
 
   scanCode(){
-   // console.log('scanCode');
+   console.log('scanCode');
     this.barScanner.scan().then(barcodeData => {
      // console.log('Barcode data', barcodeData);
+     console.log('Proceso de scan');
       if ( !barcodeData.cancelled) {
+        console.log('entro a scan');
         this.datalocalservice.guardarRegistro(barcodeData.format, barcodeData.text);
       }
      }).catch(err => {
+      console.log('Error scan');
        //  console.log('Error', err);
          //Solo para cuando estamos probando en la pc, pq no cuenta con cordova /capacitor
          //para qr http
